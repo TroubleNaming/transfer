@@ -74,4 +74,17 @@
     <arg name="paused" value="$(arg paused)"/>
     <arg name="stopped_controllers" value="$(arg stopped_controllers)"/>
   </include>
+
+  <node pkg="aruco_ros" type="single"  name="aruco_single">
+      <remap from="/camera_info"       to="/camera_depth/color/camera_info" />
+      <remap from="/image"             to="/camera_depth/color/image_raw" />
+      <param name="image_is_rectified" value="True"/>
+      <param name="marker_size"        value="0.06"/>
+      <param name="marker_id"          value="582"/>
+      <param name="reference_frame"    value="base_link"/>   
+      <param name="camera_frame"       value="camera_depth_color_optical_frame"/>
+      <param name="marker_frame"       value="aruco_frame" />
+      <param name="corner_refinement"  value="SUBPIX" />
+  </node>
+
 </launch>
